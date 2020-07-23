@@ -29,6 +29,7 @@ document.getElementById('check-out').addEventListener('click', function(){
     document.body.style.backgroundColor = '#FCF6F5FF';
 })
 
+
 // deducting and updating all price and value
 function deduct(name,id1,id2){
     let singlePrice = 0;
