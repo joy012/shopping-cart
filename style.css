@@ -54,7 +54,7 @@ body{
 #form{
 	display: none;
 	background-color: darkgray;
-	margin: 10%;
+	margin: 10% auto;
 }
 #thankYou{
 	display: none;
