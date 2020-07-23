@@ -21,13 +21,14 @@ for (let i = 0; i < removeItem.length; i++) {
         document.getElementsByClassName('cart-item')[i].style.display = 'none';
     })
 }
-// checkout button
+// checkout button click handler
 document.getElementById('check-out').addEventListener('click', function(){
     alert('You are about to Checkout');
     document.getElementById('full-area').style.display = 'none';
     document.getElementById('thankYou').style.display = 'block';
     document.body.style.backgroundColor = '#FCF6F5FF';
 })
+
 // deducting and updating all price and value
 function deduct(name,id1,id2){
     let singlePrice = 0;
@@ -67,9 +68,9 @@ function add(name,id1,id2){
     updateCosts(singlePrice);
 }
 // calculate sub, tax and total
-function updateCosts(current, id){
+function updateCosts(singleVal){
     const subTotal = parseFloat(document.getElementById('subtotal').innerText);
-    const updatedSubtotal = subTotal + current;
+    const updatedSubtotal = subTotal + singleVal;
     document.getElementById('subtotal').innerText = updatedSubtotal;
 
     const updatedTax = parseFloat((updatedSubtotal * 0.12).toFixed(2));
