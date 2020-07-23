@@ -51,6 +51,11 @@ body{
 	background-color: #2FBE70;
 	border: none;
 }
+#form{
+	display: none;
+	background-color: darkgray;
+	margin: 10%;
+}
 #thankYou{
 	display: none;
 	padding: 15% 15%;

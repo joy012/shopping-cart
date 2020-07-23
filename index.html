@@ -15,7 +15,7 @@
    <section id="full-area" class="container">
       <div class="cart">
          <div class="col-md-12 col-lg-10 mx-auto">
-            <div class="cart-item">
+            <div id="cart-phone" class="cart-item">
                <div class="row">
                   <div class="col-md-7 center-item">
                      <img src="images/product-1.png" alt="">
@@ -33,7 +33,7 @@
                   </div>
                </div>
             </div>
-            <div class="cart-item">
+            <div id="cart-case" class="cart-item">
                <div class="row">
                   <div class="col-md-7 center-item mx-auto">
                      <img src="images/product-2.png" alt="">
@@ -71,19 +71,62 @@
       </div>
    </section>
 
-   <!-- success message -->
+   <!-- checkout form -->
+   <section id='form' class="container">
+      <form class="p-5">
+         <h2 class="text-center">Enter your information</h2>
+         <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Your Name">
+          </div>
+         <div class="form-row">
+           <div class="form-group col-md-6">
+             <label for="inputEmail4">Email</label>
+             <input type="email" class="form-control" id="inputEmail4">
+           </div>
+           <div class="form-group col-md-6">
+             <label for="inputPassword4">Password</label>
+             <input type="password" class="form-control" id="inputPassword4">
+           </div>
+         </div>
+         <div class="form-group">
+           <label for="inputAddress">Billing Address</label>
+           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+         </div>
+         <div class="form-row">
+           <div class="form-group col-md-6">
+             <label for="inputCity">City</label>
+             <input type="text" class="form-control" id="inputCity">
+           </div>
+           <div class="form-group col-md-4">
+             <label for="inputState">State</label>
+             <input type="text" class="form-control" id="inputState">
+           </div>
+           <div class="form-group col-md-2">
+             <label for="inputZip">Zip</label>
+             <input type="text" class="form-control" id="inputZip">
+           </div>
+         </div>
+         <div class="form-group">
+           <div class="form-check">
+             <input class="form-check-input" type="checkbox" id="gridCheck">
+             <label class="form-check-label" for="gridCheck">
+               <h5>Subscribe to get updates on flash sale!</h5>
+             </label>
+           </div>
+         </div>
+         <button id="placeOrder" type="button" class="btn btn-success d-block ml-auto">Place Order</button>
+       </form>
+   </section>
+
+   <!-- order placed message -->
    <section class="d-flex align-items-center justify-content-center">
       <div  id="thankYou"  class="text-center">
-         <h1>Thank you for shopping with us</h1>
-         <h3 class="text-success">Your order has been placed successfully
+         <h1></h1>
+         <h4 class="text-success">Your order has been placed successfully
             <i class="fas fa-check"></i>
-         </h3>
+         </h4>
          <h5 class="text-info">Order Number: #FR420</h5>
-         <h5>Subscribe to get updates on flash sale!</h5>
-         <form class="form-inline d-block">
-            <input class="form-control" type="email" placeholder="Email">
-            <button class="btn btn-info">Subscribe</button>
-         </form>
       </div>
    </section>
 
