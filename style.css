@@ -51,3 +51,7 @@ body{
 	background-color: #2FBE70;
 	border: none;
 }
+#thankYou{
+	display: none;
+	padding: 15% 15%;
+}
