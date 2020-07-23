@@ -37,7 +37,7 @@ document.getElementById('placeOrder').addEventListener('click', function(){
     document.body.style.backgroundColor = '#FCF6F5FF';
     const customer = document.getElementById('inputName').value;
     const upCaseName = customer.toUpperCase(); 
-    document.querySelector('#thankYou h1').innerText = 'Thank you ' + upCaseName + ' for shopping with us!';
+    document.querySelector('#thankYou h1').innerText = 'Thank you ' + upCaseName + ' for shopping with Panda Commerce!';
 })
 
 
