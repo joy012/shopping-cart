@@ -53,8 +53,9 @@ body{
 }
 #form{
 	display: none;
-	background-color: darkgray;
+	background-color: rgb(252, 165, 133);
 	margin: 10% auto;
+	border-radius: 20px;
 }
 #thankYou{
 	display: none;

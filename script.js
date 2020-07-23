@@ -16,7 +16,7 @@ function deduct(item,id1,id2){
         const currentPrice = parseInt(document.getElementById(id2).innerText);
         const updatedPrice = currentPrice - unitPrice;
         document.getElementById(id2).innerText = updatedPrice;
-        updateCosts(-1 * unitPrice);
+        updateCostSection(-1 * unitPrice);
     }
 }
 
@@ -27,7 +27,7 @@ function add(item,id1,id2){
         unitPrice = 1219;
     }
     else{
-        singlePrice = 59;
+        unitPrice = 59;
     }
     let currentValue = parseInt(document.getElementById(id1).value);
     document.getElementById(id1).value = ++currentValue;
@@ -35,7 +35,7 @@ function add(item,id1,id2){
     const currentPrice = parseInt(document.getElementById(id2).innerText);
     const updatedPrice = currentPrice + unitPrice;
     document.getElementById(id2).innerText = updatedPrice;
-    updateCostSection(singlePrice);
+    updateCostSection(unitPrice);
 }
 
 // update subtotal, tax and total
