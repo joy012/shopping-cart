@@ -1,28 +1,30 @@
-// deducting and updating item number and price
+/**************  All Functions ***********/
+
+// deducting and updating item number and current price
 function deduct(item,id1,id2){
-    let singlePrice = 0;
+    let unitPrice = 0;
     if(item === 'phn'){
-        singlePrice = 1219;
+        unitPrice = 1219;
     }
     else{
-        singlePrice = 59;
+        unitPrice = 59;
     }
     let currentValue = parseInt(document.getElementById(id1).value);
     if(currentValue > 0 ){
         document.getElementById(id1).value = --currentValue;
 
         const currentPrice = parseInt(document.getElementById(id2).innerText);
-        const updatedPrice = currentPrice - singlePrice;
+        const updatedPrice = currentPrice - unitPrice;
         document.getElementById(id2).innerText = updatedPrice;
-        updateCosts(-1*singlePrice);
+        updateCosts(-1 * unitPrice);
     }
 }
 
-// adding and updating item number and price
+// adding and updating item number and current price
 function add(item,id1,id2){
-    let singlePrice = 0;
+    let unitPrice = 0;
     if(item === 'phn'){
-        singlePrice = 1219;
+        unitPrice = 1219;
     }
     else{
         singlePrice = 59;
@@ -31,15 +33,15 @@ function add(item,id1,id2){
     document.getElementById(id1).value = ++currentValue;
 
     const currentPrice = parseInt(document.getElementById(id2).innerText);
-    const updatedPrice = currentPrice + singlePrice;
+    const updatedPrice = currentPrice + unitPrice;
     document.getElementById(id2).innerText = updatedPrice;
-    updateCosts(singlePrice);
+    updateCostSection(singlePrice);
 }
 
 // update subtotal, tax and total
-function updateCosts(singlePrice){
+function updateCostSection(unitPrice){
     const subTotal = parseFloat(document.getElementById('subtotal').innerText);
-    const updatedSubtotal = subTotal + singlePrice;
+    const updatedSubtotal = subTotal + unitPrice;
     document.getElementById('subtotal').innerText = updatedSubtotal;
 
     const updatedTax = parseFloat((updatedSubtotal * 0.12).toFixed(2));
@@ -49,7 +51,7 @@ function updateCosts(singlePrice){
     document.getElementById('total').innerText = updatedTotal;
 }
 
-// calculate the left item costs after removing one
+// costs after remove one item from cart
 function afterRemove(unitPrice,id){
     const itemNum = parseInt(document.getElementById(id).value);
 
@@ -65,33 +67,33 @@ function afterRemove(unitPrice,id){
 }
 
 
-// phone remove button event handler
+// phone minus button event handler
 document.getElementById('removePhone').addEventListener('click', function(){
     deduct('phn','currentPhone','currentPhonePrice');
 })
 
-// phone add button event handler
+// phone plus button event handler
 document.getElementById('addPhone').addEventListener('click', function(){
     add('phn','currentPhone','currentPhonePrice');
 })
 
-// case remove button event handler
+// case minus button event handler
 document.getElementById('removeCase').addEventListener('click', function(){
     deduct('case','currentCase','currentCasePrice');
 })
 
-// case add button event handler
+// case plus button event handler
 document.getElementById('addCase').addEventListener('click', function(){
     add('case','currentCase','currentCasePrice');
 })
 
-// remove phone item from cart click handler
+// phone item remove button click handler
 document.querySelectorAll('img.remove-item')[0].addEventListener('click', function(){
     document.getElementById('cart-phone').style.display = 'none';
     afterRemove(1219,'currentPhone');
 })
 
-// remove Case item from cart click handler
+// Case item remove button click handler
 document.querySelectorAll('img.remove-item')[1].addEventListener('click', function(){
     document.getElementById('cart-case').style.display = 'none';
     afterRemove(59,'currentCase');
@@ -104,7 +106,7 @@ document.getElementById('check-out').addEventListener('click', function(){
     document.getElementById('form').style.display = 'block';
 })
 
-// place order button handler
+// place order button click handler
 document.getElementById('placeOrder').addEventListener('click', function(){
     document.getElementById('form').style.display = 'none';
     document.getElementById('thankYou').style.display = 'block';
