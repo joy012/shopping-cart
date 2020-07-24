@@ -1,4 +1,4 @@
-/**************  All Functions ***********/
+                        /**************  All Functions ***********/
 
 // deducting and updating item number and current price
 function deduct(item,id1,id2){
@@ -13,8 +13,8 @@ function deduct(item,id1,id2){
     if(currentValue > 0 ){
         document.getElementById(id1).value = --currentValue;
 
-        const currentPrice = parseInt(document.getElementById(id2).innerText);
-        const updatedPrice = currentPrice - unitPrice;
+        const currentPrice = parseInt((document.getElementById(id2).innerText).split(",").join(""));
+        const updatedPrice = (currentPrice - unitPrice).toLocaleString();
         document.getElementById(id2).innerText = updatedPrice;
         updateCostSection(-1 * unitPrice);
     }
@@ -32,40 +32,42 @@ function add(item,id1,id2){
     let currentValue = parseInt(document.getElementById(id1).value);
     document.getElementById(id1).value = ++currentValue;
 
-    const currentPrice = parseInt(document.getElementById(id2).innerText);
-    const updatedPrice = currentPrice + unitPrice;
+    const currentPrice = parseInt((document.getElementById(id2).innerText).split(",").join(""));
+    const updatedPrice = (currentPrice + unitPrice).toLocaleString();
     document.getElementById(id2).innerText = updatedPrice;
     updateCostSection(unitPrice);
 }
 
 // update subtotal, tax and total
 function updateCostSection(unitPrice){
-    const subTotal = parseFloat(document.getElementById('subtotal').innerText);
+    const subTotal = parseFloat((document.getElementById('subtotal').innerText).split(",").join(""));
     const updatedSubtotal = subTotal + unitPrice;
-    document.getElementById('subtotal').innerText = updatedSubtotal;
+    document.getElementById('subtotal').innerText = updatedSubtotal.toLocaleString();
 
-    const updatedTax = parseFloat((updatedSubtotal * 0.12).toFixed(2));
-    document.getElementById('tax').innerText = updatedTax;
+    const updatedTax = parseFloat(((updatedSubtotal * 0.08).toFixed(2)).split(",").join(""));
+    document.getElementById('tax').innerText = updatedTax.toLocaleString();
 
-    const updatedTotal = parseFloat((updatedSubtotal + updatedTax).toFixed(2));
-    document.getElementById('total').innerText = updatedTotal;
+    const updatedTotal = parseFloat(((updatedSubtotal + updatedTax).toFixed(2)).split(",").join(""));
+    document.getElementById('total').innerText = updatedTotal.toLocaleString();
 }
 
 // costs after remove one item from cart
 function afterRemove(unitPrice,id){
     const itemNum = parseInt(document.getElementById(id).value);
 
-    const subTotal = parseFloat(document.getElementById('subtotal').innerText)
+    const subTotal = parseFloat((document.getElementById('subtotal').innerText).split(",").join(""));
     const updatedSubtotal = subTotal - (itemNum*unitPrice);
-    document.getElementById('subtotal').innerText = updatedSubtotal;
+    document.getElementById('subtotal').innerText = updatedSubtotal.toLocaleString();
 
-    const updatedTax = parseFloat((updatedSubtotal * 0.12).toFixed(2));
-    document.getElementById('tax').innerText = updatedTax;
+    const updatedTax = parseFloat(((updatedSubtotal * 0.08).toFixed(2)).split(",").join(""));
+    document.getElementById('tax').innerText = updatedTax.toLocaleString();
 
-    const updatedTotal = parseFloat((updatedSubtotal + updatedTax).toFixed(2));
-    document.getElementById('total').innerText = updatedTotal;
+    const updatedTotal = parseFloat(((updatedSubtotal + updatedTax).toFixed(2)).split(",").join(""));
+    document.getElementById('total').innerText = updatedTotal.toLocaleString();
 }
 
+
+                        /************** All event handler *************/
 
 // phone minus button event handler
 document.getElementById('removePhone').addEventListener('click', function(){
