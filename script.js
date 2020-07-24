@@ -1,44 +1,46 @@
-                        /**************  All Functions ***********/
 
-// deducting and updating item number and current price
-function deduct(item,id1,id2){
+// deducting and update item number and current item total price
+function deduct(itemName,itemCount_id,itemPrice_id){
     let unitPrice = 0;
-    if(item === 'phn'){
+    const itemTotalPrice_id = itemPrice_id;
+    if(itemName === 'phn'){
         unitPrice = 1219;
     }
     else{
         unitPrice = 59;
     }
-    let currentValue = parseInt(document.getElementById(id1).value);
-    if(currentValue > 0 ){
-        document.getElementById(id1).value = --currentValue;
+    let currentCount = parseInt(document.getElementById(itemCount_id).value);
+    if(currentCount > 0 ){
+        document.getElementById(itemCount_id).value = --currentCount;
 
-        const currentPrice = parseInt((document.getElementById(id2).innerText).split(",").join(""));
-        const updatedPrice = (currentPrice - unitPrice).toLocaleString();
-        document.getElementById(id2).innerText = updatedPrice;
+        updateCurrentItemPrice(itemTotalPrice_id,unitPrice,currentCount);
         updateCostSection(-1 * unitPrice);
     }
 }
 
 // adding and updating item number and current price
-function add(item,id1,id2){
+function add(itemName,itemCount_id,itemPrice_id){
     let unitPrice = 0;
-    if(item === 'phn'){
+    const itemTotalPrice_id = itemPrice_id;
+    if(itemName === 'phn'){
         unitPrice = 1219;
     }
     else{
         unitPrice = 59;
     }
-    let currentValue = parseInt(document.getElementById(id1).value);
-    document.getElementById(id1).value = ++currentValue;
+    let currentCount = parseInt(document.getElementById(itemCount_id).value);
+    document.getElementById(itemCount_id).value = ++currentCount;
 
-    const currentPrice = parseInt((document.getElementById(id2).innerText).split(",").join(""));
-    const updatedPrice = (currentPrice + unitPrice).toLocaleString();
-    document.getElementById(id2).innerText = updatedPrice;
+    const itemUpdatedPrice = updateCurrentItemPrice(itemTotalPrice_id,unitPrice,currentCount);
     updateCostSection(unitPrice);
 }
 
-// update subtotal, tax and total
+// update item current price
+function updateCurrentItemPrice(itemPrice_id,unitPrice,currentCount){
+    const updatedPrice = unitPrice * currentCount;
+    document.getElementById(itemPrice_id).innerText = updatedPrice.toLocaleString();
+}
+// update costs section
 function updateCostSection(unitPrice){
     const subTotal = parseFloat((document.getElementById('subtotal').innerText).split(",").join(""));
     const updatedSubtotal = subTotal + unitPrice;
@@ -67,38 +69,36 @@ function afterRemove(unitPrice,id){
 }
 
 
-                        /************** All event handler *************/
-
 // phone minus button event handler
-document.getElementById('removePhone').addEventListener('click', function(){
-    deduct('phn','currentPhone','currentPhonePrice');
+document.getElementById('decreasePhone').addEventListener('click', function(){
+    deduct('phn','currentPhoneCount','phoneTotalPrice');
 })
 
 // phone plus button event handler
-document.getElementById('addPhone').addEventListener('click', function(){
-    add('phn','currentPhone','currentPhonePrice');
+document.getElementById('increasePhone').addEventListener('click', function(){
+    add('phn','currentPhoneCount','phoneTotalPrice');
 })
 
 // case minus button event handler
-document.getElementById('removeCase').addEventListener('click', function(){
-    deduct('case','currentCase','currentCasePrice');
+document.getElementById('decreaseCase').addEventListener('click', function(){
+    deduct('case','currentCaseCount','caseTotalPrice');
 })
 
 // case plus button event handler
-document.getElementById('addCase').addEventListener('click', function(){
-    add('case','currentCase','currentCasePrice');
+document.getElementById('increaseCase').addEventListener('click', function(){
+    add('case','currentCaseCount','caseTotalPrice');
 })
 
 // phone item remove button click handler
 document.querySelectorAll('img.remove-item')[0].addEventListener('click', function(){
     document.getElementById('cart-phone').style.display = 'none';
-    afterRemove(1219,'currentPhone');
+    afterRemove(1219,'currentPhoneCount');
 })
 
 // Case item remove button click handler
 document.querySelectorAll('img.remove-item')[1].addEventListener('click', function(){
     document.getElementById('cart-case').style.display = 'none';
-    afterRemove(59,'currentCase');
+    afterRemove(59,'currentCaseCount');
 })
 
 // checkout button click handler
